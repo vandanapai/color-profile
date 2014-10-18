@@ -1,0 +1,54 @@
+#img-color {
+	width: 320px;
+	height: 320px;
+}
+
+#loaded-img {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	position: relative;
+	width: 480px;
+	height: 480px;
+  	display: inline-block;
+    vertical-align: middle;
+    font: 16px/1 Arial sans-serif;  
+}
+
+#loaded-img img {
+	max-width: 480px;
+	max-height: 480px;
+	vertical-align: middle;
+
+}
+
+.img-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display:none;
+	height: 100%;
+	text-align: center;
+	font: 0/0 a; 
+}
+
+
+.img-container:before {    
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle; 
+    height: 100%;
+}
+
+#img-close {
+	position: absolute;
+	right: 8px;
+	top: 8px;
+	display: block;
+	font: 30px/30px "Helvetica Neue",Arial,Helvetica,sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	color: black;
+}
