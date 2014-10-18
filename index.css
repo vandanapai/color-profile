@@ -1,6 +1,15 @@
 #img-color {
 	width: 320px;
 	height: 320px;
+	opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+}
+
+
+#img-color:hover {
+	opacity: .9;
 }
 
 #loaded-img {
@@ -21,6 +30,7 @@
 	vertical-align: middle;
 
 }
+
 
 .img-container {
 	position: absolute;
@@ -50,5 +60,6 @@
 	font: 30px/30px "Helvetica Neue",Arial,Helvetica,sans-serif;
 	font-weight: 700;
 	font-style: normal;
-	color: black;
+	color: #fff;
+	cursor: pointer;
 }
