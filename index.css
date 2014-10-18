@@ -1,6 +1,6 @@
-#img-color {
-	width: 320px;
-	height: 320px;
+.img-color {
+	width: 160px;
+	height: 160px;
 	opacity: 1;
    transition: opacity .25s ease-in-out;
    -moz-transition: opacity .25s ease-in-out;
@@ -8,7 +8,7 @@
 }
 
 
-#img-color:hover {
+.img-color:hover {
 	opacity: .9;
 }
 
@@ -41,7 +41,7 @@
 	display:none;
 	height: 100%;
 	text-align: center;
-	font: 0/0 a; 
+	font: 0/0 a;
 }
 
 
