@@ -1,5 +1,7 @@
 $( window ).load(function() {
 
+
+
 	$('#submit-image').click(function() {
 		var imgURL = $('#user-input').val();
 		console.log(imgURL);
@@ -9,6 +11,8 @@ $( window ).load(function() {
 			var colorThief = new ColorThief();
 
 			console.log(this); // check image URL
+
+			// display dominant color
 
 			var domColor = colorThief.getColor(this);
 			$('.img-color').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')');  // display the dominant color
