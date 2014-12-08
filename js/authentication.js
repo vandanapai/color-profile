@@ -1,36 +1,53 @@
 
 	// var clientID = "918a798aebef4d2da2668c2136cdcd02";
-	// var redirectURI = "http://127.0.0.1";
-	// var xhr = new  XMLHttpRequest();
 
-	// xhr.open("GET", "https://instagram.com/oauth/authorize/?client_id=" + clientID + "&redirect_uri=" + redirectURI + "&response_type=token", false);
+$( window ).load(function() {
 
-	// xhr.send();
-	// console.log(xhr.status);
-	// console.log(xhr.statusText);
+	var imgUrlArray = [];
 
-var firstImgUrl;
-
-
-$.ajax ({
-	type: "GET",
-	dataType: "jsonp",
-	cache: false,
-	url: "https://api.instagram.com/v1/users/30940069/media/recent/?access_token=30940069.918a798.b34436dee9224d5f9c347247fa869f4f",
-	// success: function(data) {
-	// 	for (var i = 0; i < 5; i++) {
-	// 		$('#recent').append('<a target="_blank" href="' + data.data[i].link + '"><img src="' + data.data[i].images.low_resolution.url + '"></img></a></li>');
-
-	// 	}
-	// }
-	success: function(data) {
-		for (var i = 0; i < 1; i++) {
-			useReturnData(data.data[i].images.low_resolution.url);
+	$.ajax ({
+		type: "GET",
+		dataType: "jsonp",
+		cache: false,
+		url: "https://api.instagram.com/v1/users/30940069/media/recent/?access_token=30940069.918a798.b34436dee9224d5f9c347247fa869f4f",
+		success: function(data) {
+			for (var i = 0; i < 10; i++) {
+				imgUrlArray.push(data.data[i].images.standard_resolution.url);
+			}
+			imgColor(imgUrlArray);
 		}
-	}
-});
+	});
 
-function useReturnData(data) {
-	firstImgUrl = data;
-	console.log(firstImgUrl);
-};
+	function imgColor(data) {
+		for (var i = 0; i < 1; i++) {
+
+			$('<img src="' + imgUrlArray[i] + '">').load(function() {
+			var colorThief = new ColorThief();
+
+			// display dominant color
+
+			var domColor = colorThief.getColor(this);
+			$('.img-color').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')');  // display the dominant color
+			$('.img-container').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')'); // load dom color bg for modal
+
+			$('.loaded-img').prepend(this).css;
+
+			// on click display the image in a modal
+
+				$('.img-color').click(function() {
+					$('.img-container').fadeIn(200);
+				});
+
+				// close modal 
+
+				$('.img-close').click(function() {
+					$('.img-container').fadeOut(200);
+				});
+			
+			});
+		};
+
+
+	};
+
+});
