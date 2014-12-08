@@ -11,7 +11,7 @@ $( window ).load(function() {
 		cache: false,
 		url: "https://api.instagram.com/v1/users/30940069/media/recent/?access_token=30940069.918a798.b34436dee9224d5f9c347247fa869f4f",
 		success: function(data) {
-			for (var i = 0; i < 10; i++) {
+			for (var i = 0; i < 3; i++) {
 				imgUrlArray.push(data.data[i].images.standard_resolution.url);
 			}
 			imgColor(imgUrlArray);
@@ -19,31 +19,38 @@ $( window ).load(function() {
 	});
 
 	function imgColor(data) {
-		for (var i = 0; i < 1; i++) {
+		for (var i = 0; i < imgUrlArray.length; i++) {
+
+			$('body').append('<div id="colorContainer' + i + '">TESTING' + i + '</div>');
+			$('#colorContainer' + i).addClass('img-color');
+
 
 			$('<img src="' + imgUrlArray[i] + '">').load(function() {
-			var colorThief = new ColorThief();
 
-			// display dominant color
+				var colorThief = new ColorThief();
 
-			var domColor = colorThief.getColor(this);
-			$('.img-color').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')');  // display the dominant color
-			$('.img-container').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')'); // load dom color bg for modal
+				// display dominant color
 
-			$('.loaded-img').prepend(this).css;
+				var domColor = colorThief.getColor(this);
 
-			// on click display the image in a modal
+				// need to have color change for each div
+				$('.img-color').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')');  // display the dominant color
+				$('.img-container').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')'); // load dom color bg for modal
 
-				$('.img-color').click(function() {
-					$('.img-container').fadeIn(200);
-				});
+				$('.loaded-img').prepend(this).css;
 
-				// close modal 
+					// on click display the image in a modal
 
-				$('.img-close').click(function() {
-					$('.img-container').fadeOut(200);
-				});
-			
+					$('.img-color').click(function() {
+						$('.img-container').fadeIn(200);
+					});
+
+					// close modal 
+
+					$('.close-button').click(function() {
+						$('.img-container').fadeOut(200);
+					});
+
 			});
 		};
 
