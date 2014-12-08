@@ -12,7 +12,7 @@
 	opacity: .9;
 }
 
-#loaded-img {
+.loaded-img {
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
@@ -38,10 +38,9 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	display:none;
+	display: none;
 	height: 100%;
 	text-align: center;
-	font: 0/0 a;
 }
 
 
@@ -52,7 +51,7 @@
     height: 100%;
 }
 
-#img-close {
+.img-close {
 	position: absolute;
 	right: 8px;
 	top: 8px;

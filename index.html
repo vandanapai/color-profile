@@ -3,10 +3,11 @@
 <html>
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="style/index.css">
 <script src="js/quantize.js"></script>
 <script src="js/color-thief.js"></script>
 <script src="js/insta-color.js"></script>
+<script src="js/authentication.js"></script>
 
 
 <title>instagram colorz</title>
@@ -14,16 +15,11 @@
 
 <body>
 
-<div id="insta-login">
-	<a href="https://instagram.com/oauth/authorize/?client_id=
-918a798aebef4d2da2668c2136cdcd02
-&redirect_uri=http://localhost&response_type=token">Login to Instagram</a>
-</div>
 
 
-URL: <input type="text" name="user-image" id="user-input">
+URL: <input type="text" name="user-image" class="user-input" value="">
 
-<button id="submit-image">
+<button class="submit-image">
 Enter
 </button>
 
@@ -32,12 +28,13 @@ Enter
 
 
 <div id="container" class="img-container">
-	<div id="loaded-img">
-        </img>
+	<div class="loaded-img">
+
     </div>
-    <div id="img-close">&#10005; <div>
+    <div class="img-close">&#10005; </div>
 </div>
 
+<ul id="recent"></ul>
 
 
 </body>

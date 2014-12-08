@@ -2,8 +2,8 @@ $( window ).load(function() {
 
 
 
-	$('#submit-image').click(function() {
-		var imgURL = $('#user-input').val();
+	$('.submit-image').click(function() {
+		var imgURL = $('.user-input').val();
 		console.log(imgURL);
 
 
@@ -20,7 +20,7 @@ $( window ).load(function() {
 
 			// load the image in a new div hidden
 
-			$('#loaded-img').prepend(this).css;
+			$('.loaded-img').prepend(this).css;
 
 			// on click display the image in a modal
 
@@ -30,10 +30,9 @@ $( window ).load(function() {
 
 			// close modal 
 
-			$('#img-close').click(function() {
+			$('.img-close').click(function() {
 				$('.img-container').fadeOut(200);
 			});
-
 
 
 		});
