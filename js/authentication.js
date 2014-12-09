@@ -1,6 +1,3 @@
-
-	// var clientID = "918a798aebef4d2da2668c2136cdcd02";
-
 $( window ).load(function() {
 
 	var imgUrlArray = [];
@@ -12,32 +9,34 @@ $( window ).load(function() {
 		url: "https://api.instagram.com/v1/users/30940069/media/recent/?access_token=30940069.918a798.b34436dee9224d5f9c347247fa869f4f",
 		success: function(data) {
 			for (var i = 0; i < 3; i++) {
-				imgUrlArray.push(data.data[i].images.standard_resolution.url);
+				imgUrlArray.push(data.data[i].images.low_resolution.url);
 			}
 			imgColor(imgUrlArray);
 		}
 	});
 
+
 	function imgColor(data) {
-		for (var i = 0; i < imgUrlArray.length; i++) {
 
-			$('body').append('<div id="colorContainer' + i + '">TESTING' + i + '</div>');
-			$('#colorContainer' + i).addClass('img-color');
+		for (var j = 0; j < data.length; j++) {
 
+			var imageObject = new Image();
+			imageObject.src = data[j];
 
-			$('<img src="' + imgUrlArray[i] + '">').load(function() {
+			$('body').append('<div id="colorContainer' + j + '">TESTING' + j + '</div>'); // create new div
+
+			$('#colorContainer' + j).addClass('img-color');
+
 
 				var colorThief = new ColorThief();
+				var domColor = colorThief.getColor(imageObject);
 
-				// display dominant color
+				// display dominant color in specific div
+				$('#colorContainer' + j + '.img-color').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')');  // display the dominant color
 
-				var domColor = colorThief.getColor(this);
-
-				// need to have color change for each div
-				$('.img-color').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')');  // display the dominant color
 				$('.img-container').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')'); // load dom color bg for modal
 
-				$('.loaded-img').prepend(this).css;
+				$('.loaded-img').prepend(imageObject).css;
 
 					// on click display the image in a modal
 
@@ -51,7 +50,7 @@ $( window ).load(function() {
 						$('.img-container').fadeOut(200);
 					});
 
-			});
+
 		};
 
 
