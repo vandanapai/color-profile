@@ -18,15 +18,13 @@ $( window ).load(function() {
 
 	function imgColor(data) {
 
+
 		for (var j = 0; j < data.length; j++) {
 
 			$('.recent').append('<li><a target="_blank" href="' + data[j] + '"><img src="' + data[j]+ '"></img></a></li>');
 
 			var imgObject = new Image();
 			imgObject.src = data[j];
-
-			imgObject.width="400";
-			imgObject.height="400";
 
 
 			$('#mainContainer').append('<div id="colorContainer' + j + '">TESTING' + j + '</div>'); // create new div
