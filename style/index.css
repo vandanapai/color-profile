@@ -2,6 +2,7 @@
 	width: 160px;
 	height: 160px;
 	opacity: 1;
+	display: inline-block;
    transition: opacity .25s ease-in-out;
    -moz-transition: opacity .25s ease-in-out;
    -webkit-transition: opacity .25s ease-in-out;
@@ -30,7 +31,6 @@
 	vertical-align: middle;
 
 }
-
 
 .img-container {
 	position: absolute;

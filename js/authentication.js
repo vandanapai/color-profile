@@ -20,23 +20,29 @@ $( window ).load(function() {
 
 		for (var j = 0; j < data.length; j++) {
 
-			var imageObject = new Image();
-			imageObject.src = data[j];
+			$('.recent').append('<li><a target="_blank" href="' + data[j] + '"><img src="' + data[j]+ '"></img></a></li>');
 
-			$('body').append('<div id="colorContainer' + j + '">TESTING' + j + '</div>'); // create new div
+			var imgObject = new Image();
+			imgObject.src = data[j];
+
+			imgObject.width="400";
+			imgObject.height="400";
+
+
+			$('#mainContainer').append('<div id="colorContainer' + j + '">TESTING' + j + '</div>'); // create new div
 
 			$('#colorContainer' + j).addClass('img-color');
 
 
 				var colorThief = new ColorThief();
-				var domColor = colorThief.getColor(imageObject);
+				var domColor = colorThief.getColor(imgObject);
 
 				// display dominant color in specific div
 				$('#colorContainer' + j + '.img-color').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')');  // display the dominant color
 
 				$('.img-container').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')'); // load dom color bg for modal
 
-				$('.loaded-img').prepend(imageObject).css;
+				$('.loaded-img').prepend(imgObject).css;
 
 					// on click display the image in a modal
 
