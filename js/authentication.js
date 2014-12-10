@@ -8,30 +8,33 @@ $( window ).load(function() {
 		cache: false,
 		url: "https://api.instagram.com/v1/users/30940069/media/recent/?access_token=30940069.918a798.b34436dee9224d5f9c347247fa869f4f",
 		success: function(data) {
-			for (var i = 0; i < 5; i++) {
+			for (var i = 0; i < 10; i++) {
 				imgUrlArray.push(data.data[i].images.low_resolution.url);
 			}
 			preload(imgUrlArray);
-			// imgColor(imgUrlArray);
 		}
 	});
 
 	var images = new Array();
+	var numLoadedImages = 0;
+
+	function counter() {
+		numLoadedImages++;
+		if (numLoadedImages == images.length) {
+			imgColor(images);
+		}
+	}
 
 	function preload(array) {
 
 		for (var k = 0; k < array.length; k++) {
 			var img = new Image();
-			var counter = 0;
 			img.src = array[k];
-			images[k] = img;
-			// counter++;
-			// console.log(counter)		
+			images.push(img);
+			$(img).on('load', function () {
+				counter();
+			});
 		}
-
-		// if (counter.length == array.length) {
-			imgColor(images);
-		// }
 
 	}
 
@@ -50,7 +53,7 @@ $( window ).load(function() {
 
 
 				var colorThief = new ColorThief();
-				var domColor = colorThief.getColor(imgObject, 3);
+				var domColor = colorThief.getColor(imgObject);
 
 				// display dominant color in specific div
 				$('#colorContainer' + j + '.img-color').css('background-color', 'rgb(' + domColor[0] + ',' + domColor[1] + ',' + domColor[2] + ')');  // display the dominant color
