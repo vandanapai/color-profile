@@ -8,7 +8,7 @@ $( window ).load(function() {
 		cache: false,
 		url: "https://api.instagram.com/v1/users/30940069/media/recent/?access_token=30940069.918a798.b34436dee9224d5f9c347247fa869f4f",
 		success: function(data) {
-			for (var i = 0; i < 3; i++) {
+			for (var i = 0; i < 20; i++) {
 				imgUrlArray.push(data.data[i].images.low_resolution.url);
 			}
 			preload(imgUrlArray);
@@ -33,8 +33,9 @@ $( window ).load(function() {
 			// img.src = array[k];
 
 
-			// var img = $('<img />',{ src: array[k], width:'480', height: '480'});
-			// img.crossOrigin = 'anonymous';
+
+			var img = $('<img />',{ src: array[k], width:'480', height: '480'});
+			img.crossOrigin = 'anonymous';
 			images.push(img[0]);
 			$(img).on('load', function () {
 				counter();
