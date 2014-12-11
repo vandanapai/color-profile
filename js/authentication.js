@@ -4,11 +4,11 @@ $( window ).load(function() {
 
 	$.ajax ({
 		type: "GET",
-		dataType: "JSON",
+		dataType: "jsonp",
 		cache: false,
 		url: "https://api.instagram.com/v1/users/30940069/media/recent/?access_token=30940069.918a798.b34436dee9224d5f9c347247fa869f4f",
 		success: function(data) {
-			for (var i = 0; i < 10; i++) {
+			for (var i = 0; i < 3; i++) {
 				imgUrlArray.push(data.data[i].images.low_resolution.url);
 			}
 			preload(imgUrlArray);
@@ -28,9 +28,14 @@ $( window ).load(function() {
 	function preload(array) {
 
 		for (var k = 0; k < array.length; k++) {
-			var img = new Image();
-			img.src = array[k];
-			images.push(img);
+			
+			// var img = new Image();	
+			// img.src = array[k];
+
+
+			// var img = $('<img />',{ src: array[k], width:'480', height: '480'});
+			// img.crossOrigin = 'anonymous';
+			images.push(img[0]);
 			$(img).on('load', function () {
 				counter();
 			});
@@ -38,13 +43,13 @@ $( window ).load(function() {
 
 	}
 
-
 	function imgColor(data) {
 
 		for (var j = 0; j < data.length; j++) {
 
 			var imgObject = data[j];
-			$('.recent').append('<li><img src="' + imgUrlArray[j] + '"></img></li>');
+
+			// $('.recent').append('<li><img src="' + imgUrlArray[j] + '"></img></li>');
 
 
 			$('#mainContainer').append('<div id="colorContainer' + j + '">TESTING' + j + '</div>'); // create a new square div for the color
@@ -79,5 +84,9 @@ $( window ).load(function() {
 
 
 	};
+
+	function displayModal() {
+
+	}
 
 });
