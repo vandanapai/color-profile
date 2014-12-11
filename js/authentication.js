@@ -32,10 +32,19 @@ $( window ).load(function() {
 			// var img = new Image();	
 			// img.src = array[k];
 
+			// $.getImageData({
+			// 	url: imgUrlArray[k],
+			// 	success: function(image) {
+			// 		console.log('check');
+			// 		images.push(image);
+			// 		counter();
+			// 	},
+			// 	error: console.log('error')
+			// });
 
 
 			var img = $('<img />',{ src: array[k], width:'480', height: '480'});
-			img.crossOrigin = 'anonymous';
+			// img.crossOrigin = 'anonymous';
 			images.push(img[0]);
 			$(img).on('load', function () {
 				counter();
