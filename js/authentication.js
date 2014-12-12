@@ -95,8 +95,5 @@ $( window ).load(function() {
 
 	};
 
-	function displayModal() {
-
-	}
 
 });
